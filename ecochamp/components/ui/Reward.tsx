@@ -13,9 +13,14 @@ type RewardProps = {
 
 const Reward:React.FC<RewardProps> = ({onClick, image, discountDescription, discountName, pointsNeeded}) => {
   const [rewardNotfModal, setRewardNotffModal] = useState(false);
+  const [rewardSuccess, setRewardSuccess] = useState(false);
+
+  const StartRewardNotf = () => {
+    setRewardNotffModal(true);
+  }
 
   const GetThisReward = () => {
-    setRewardNotffModal(true);
+    setRewardSuccess(true);
   }
   return (
     <div className="flex flex-col gap-2">
@@ -27,10 +32,10 @@ const Reward:React.FC<RewardProps> = ({onClick, image, discountDescription, disc
             </div>
             <span className='italic text-earthGreen-500 text-xl font-bold'>Require {pointsNeeded} points.</span>
         </div>
-        <Button onClick={GetThisReward}>Get this reward</Button>
+        <Button onClick={StartRewardNotf}>Get this reward</Button>
         <Modal
-          isModalOpen={rewardNotfModal}
-          closeModal={() => setRewardNotffModal(false)}
+          isModalOpen={rewardSuccess}
+          closeModal={() => setRewardSuccess(false)}
         >
             <div className="flex flex-col items-center gap-7">
 				<div className='w-20 h-20 rounded-full bg-earthGreen-500 flex items-center justify-center'>
@@ -49,6 +54,25 @@ const Reward:React.FC<RewardProps> = ({onClick, image, discountDescription, disc
 					<span className="text-forestGreen-700 font-bold text-[1.75rem] sm:text-[2rem] text-center leading-[120%]">You've earned [X] points!</span>
 				</div>
 				<p className='text-base font-medium text-forestGreen-500 text-center'>Keep it up and continue making a positive impact!</p>
+            </div>
+        </Modal>
+
+        <Modal
+          isModalOpen={rewardNotfModal}
+          closeModal={() => setRewardNotffModal(false)}
+          acceptModal={GetThisReward}
+        >
+            <div className="flex flex-col items-center gap-7">
+              <div className='w-20 h-20 rounded-full bg-[#00B0E8] flex items-center justify-center'>
+                <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fillRule="evenodd" clip-rule="evenodd" d="M15.9902 0.876221C7.15367 0.876221 -0.00976562 8.03966 -0.00976562 16.8762C-0.00976562 25.7127 7.15367 32.8762 15.9902 32.8762C24.8267 32.8762 31.9902 25.7127 31.9902 16.8762C31.9902 8.03966 24.8267 0.876221 15.9902 0.876221ZM2.8475 16.8762C2.8475 9.61767 8.73168 3.73349 15.9902 3.73349C23.2486 3.73349 29.133 9.61767 29.133 16.8762C29.133 24.1348 23.2486 30.019 15.9902 30.019C8.73168 30.019 2.8475 24.1348 2.8475 16.8762ZM15.9898 10.3041C14.5696 10.3041 13.4183 11.4554 13.4183 12.8756C13.4183 13.6646 12.7786 14.3042 11.9896 14.3042C11.2006 14.3042 10.561 13.6646 10.561 12.8756C10.561 9.87736 12.9915 7.44681 15.9898 7.44681C18.988 7.44681 21.4186 9.87736 21.4186 12.8756C21.4186 15.3794 19.7236 17.4873 17.4184 18.1145V19.1616C17.4184 19.9506 16.7788 20.5902 15.9898 20.5902C15.2008 20.5902 14.5612 19.9506 14.5612 19.1616V16.8758C14.5612 16.0868 15.2008 15.4471 15.9898 15.4471C17.41 15.4471 18.5613 14.2958 18.5613 12.8756C18.5613 11.4554 17.41 10.3041 15.9898 10.3041ZM15.9898 21.7331C17.0944 21.7331 17.9899 22.6286 17.9899 23.7332C17.9899 24.8377 17.0944 25.7333 15.9898 25.7333C14.8852 25.7333 13.9897 24.8377 13.9897 23.7332C13.9897 22.6286 14.8852 21.7331 15.9898 21.7331Z" fill="white"/>
+                </svg>
+              </div>
+              <div className="flex flex-col items-center gap-4">
+                
+                <span className="text-forestGreen-700 font-bold text-[1.75rem] sm:text-[2rem] text-center leading-[120%]">You will get [reward name]</span>
+                <span className='font-medium text-xl text-forestGreen-700'>Are you sure?</span>
+              </div>
             </div>
         </Modal>
     </div>
