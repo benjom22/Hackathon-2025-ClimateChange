@@ -1,6 +1,5 @@
 "use client"
 import LeaderboardPlace from "@/components/layout/LeaderboardPlace"
-import { leaderboardssample } from "@/app/content/leaderboards"
 import { useEffect, useState } from "react";
 
 export default function Page() {
@@ -54,7 +53,7 @@ export default function Page() {
                         username={player.username}
                         points={player.points}
                         rank={player.rank}
-                        isLast={index == leaderboardssample.length-1}
+                        isLast={index == leaderboard.length-1}
                         avatar={player.image}
                     />
                 ))}
