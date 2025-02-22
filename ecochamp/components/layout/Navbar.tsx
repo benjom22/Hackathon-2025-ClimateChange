@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { navigation } from '@/app/content/navigation'
 import { usePathname } from 'next/navigation'
+import Image from 'next/image'
 
 const IconComponent = ({ icon }) => {
     return (
@@ -21,7 +22,7 @@ const Navbar = () => {
     
     return (
         <div>
-            <div className="w-full h-16 bg-forestGreen-700 flex items-center justify-between px-5 md:hidden">
+            <div className="w-full h-16 bg-forestGreen-700 flex items-center justify-between px-5 fixed top-0 left-0 md:hidden">
                 <svg width="116" height="28" viewBox="0 0 116 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M23.6547 20.7744C29.9835 19.129 32.1962 12.3821 30.1215 6.59833C26.4191 7.22568 21.9828 10.5111 21.1551 14.2807C20.7633 16.0582 20.9675 17.6431 21.2213 19.4096L18.5507 20.081L16.8071 18.331C20.8627 14.0881 21.4034 8.98119 18.5949 3.84675C18.1203 2.97726 16.4705 0.566878 15.7311 0.0605891C15.1463 -0.335637 14.0813 1.21625 13.673 1.73905C9.57331 7.00556 9.21466 13.4002 14.0482 18.331L12.1998 20.114L9.57331 19.2941C11.4383 12.96 6.47785 7.70996 0.551767 6.52128C-1.02631 12.5582 0.645568 18.9749 7.20619 20.7799L5.78261 24.8192L2.50506 26.2446L3.59757 27.9946C10.6934 23.9938 20.1619 24.0048 27.2798 27.9725L28.3337 26.3326L25.0175 24.5881L23.6547 20.7744ZM15.6208 2.81216C18.2252 6.57081 19.886 11.7162 16.4098 15.5024V8.4749H14.451V15.5024C11.1183 11.9309 12.3653 5.95996 15.6208 2.81216ZM7.98972 16.8672C7.45449 16.9828 7.65865 16.7021 7.50967 16.4765C6.84202 15.4694 6.40612 14.3357 5.72743 13.3397C5.34119 13.5433 4.05555 13.923 4.09969 14.3908L6.03643 18.0339C2.53816 16.7351 1.57807 12.3766 2.12433 9.05273C5.4074 10.4285 8.11662 13.0755 7.99523 16.8617L7.98972 16.8672ZM8.38148 23.8012L9.15948 21.4458C9.31398 21.3247 12.0563 22.3758 12.9447 22.1062C13.3916 21.9741 14.8483 20.2241 15.3394 19.8004C15.9463 19.8279 17.2927 21.9191 17.9217 22.1062C18.8376 22.3813 21.4862 21.2972 21.7069 21.4458L22.4794 23.9002C17.8941 22.6565 12.9998 22.9427 8.38148 23.8012ZM22.8711 16.8672C22.7663 13.0205 25.4148 10.4505 28.742 9.05823C28.88 9.96075 28.9186 10.9293 28.8303 11.8813C28.8248 11.9419 28.8193 12.0024 28.8082 12.0629C28.8082 12.0795 28.8082 12.0905 28.8082 12.107C28.8027 12.1675 28.7972 12.228 28.7862 12.2941C28.7641 12.4647 28.7365 12.6353 28.7089 12.8004C28.6979 12.8609 28.6869 12.9214 28.6703 12.9875C28.6317 13.1911 28.582 13.3892 28.5268 13.5873C28.5048 13.6644 28.4882 13.7359 28.4661 13.8129C28.411 14.0056 28.3448 14.1982 28.273 14.3853C28.2454 14.4678 28.2123 14.5449 28.1792 14.6274C28.1461 14.71 28.1075 14.798 28.0689 14.8751C28.0302 14.9576 27.9916 15.0401 27.953 15.1172C27.9144 15.1997 27.8702 15.2768 27.8261 15.3538C27.7819 15.4309 27.7378 15.5134 27.6937 15.5905C27.644 15.6675 27.5999 15.7446 27.5502 15.8161C27.5005 15.8876 27.4509 15.9647 27.3957 16.0362C27.2853 16.1903 27.164 16.3444 27.037 16.4875C26.9874 16.5425 26.9377 16.603 26.8825 16.6581C26.8219 16.7241 26.7612 16.7846 26.6949 16.8507C26.3032 17.2249 25.8618 17.5496 25.3541 17.8027C25.1831 17.8908 25.012 17.9678 24.8244 18.0394L26.7722 14.2587L25.0396 13.3617C24.5099 14.4128 23.9636 15.4694 23.3512 16.4765C23.2022 16.7241 23.3898 16.9718 22.8656 16.8617L22.8711 16.8672Z" fill="#4CAF50"/>
                     <path d="M39.7831 20.7413C39.6728 20.7413 39.5845 20.7083 39.5127 20.6367C39.441 20.5652 39.4079 20.4772 39.4079 20.3671V10.6981C39.4079 10.588 39.441 10.5 39.5127 10.4284C39.5845 10.3569 39.6728 10.3239 39.7831 10.3239H46.5424C46.6527 10.3239 46.741 10.3569 46.8127 10.4284C46.8845 10.5 46.9176 10.588 46.9176 10.6981V11.8867C46.9176 11.9858 46.8845 12.0683 46.8127 12.1399C46.741 12.2114 46.6527 12.2444 46.5424 12.2444H41.7088V14.5778H46.2168C46.3272 14.5778 46.4155 14.6108 46.4872 14.6823C46.5589 14.7539 46.592 14.8419 46.592 14.952V16.0526C46.592 16.1517 46.5589 16.2342 46.4872 16.3058C46.4155 16.3773 46.3272 16.4103 46.2168 16.4103H41.7088V18.8207H46.6638C46.7741 18.8207 46.8624 18.8537 46.9341 18.9253C47.0059 18.9968 47.039 19.0849 47.039 19.1949V20.3726C47.039 20.4827 47.0059 20.5707 46.9341 20.6422C46.8624 20.7138 46.7741 20.7468 46.6638 20.7468H39.7886L39.7831 20.7413Z" fill="white"/>
@@ -39,7 +40,7 @@ const Navbar = () => {
                     <path d="M2 22H30" stroke="white" strokeWidth="3" strokeLinecap="round"/>
                 </svg>
             </div>
-            <div className={`w-[320px] bg-forestGreen-700 px-7 pt-7 pb-5 flex flex-col justify-between gap-20 h-screen overflow-y-auto fixed top-0 md:sticky md:left-0 md:top-0 transition-all duration-200 z-[4] ${isNavbarOpened ? 'right-0' : 'right-[-100%]'}`}>
+            <div className={`w-[320px] bg-forestGreen-700 px-7 pt-7 pb-5 flex flex-col justify-between gap-20 h-screen overflow-y-auto fixed top-0 md:sticky md:left-0 md:top-0 transition-all duration-200 z-[6] ${isNavbarOpened ? 'right-0' : 'right-[-100%]'}`}>
                 <div className="flex flex-col gap-12 items-center">
                     <svg className='max-md:hidden' width="212" height="51" viewBox="0 0 212 51" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clipPath="url(#clip0_6_3836)">
@@ -77,7 +78,7 @@ const Navbar = () => {
                     </div>
                     <div className="flex flex-col gap-8 w-full">
                         <div className="flex flex-col gap-4 items-center">
-                            <div className="w-20 h-20 rounded-2xl bg-forestGreen-500"></div>
+                            <Image alt='avatar' width={100} height={100} src="https://img.freepik.com/premium-photo/african-boy-with-happy-expression-victory_651462-1092.jpg?semt=ais_hybrid" className="w-20 h-20 rounded-2xl bg-forestGreen-500 object-cover"></Image>
                             <div className="flex flex-col items-center">
                                 <span className='text-lg font-medium text-forestGreen-100 leading-[100%]'>Hello</span>
                                 <span className="text-white text-[1.75rem] leading-[130%] font-semibold">Adnan</span>
@@ -89,9 +90,10 @@ const Navbar = () => {
                             <div className="flex flex-col gap-2">
                                 {navigation.map((item, index) =>(
                                     <Link
+                                        onClick={() => setNavbarOpened(false)}
                                         href={item.to}
                                         key={index}
-                                        className={` font-medium rounded-xl px-5 py-4 flex items-center gap-3 transition-colors duration-200 ${pathname === item.to ? 'bg-forestGreen-600 text-white' : 'hover:bg-forestGreen-500 text-forestGreen-100 hover:text-white'}`}
+                                        className={`font-medium rounded-xl px-5 py-4 flex items-center gap-3 transition-colors duration-200 ${pathname === item.to ? 'bg-forestGreen-600 text-white' : 'hover:bg-forestGreen-500 text-forestGreen-100 hover:text-white'}`}
                                     >
                                         <IconComponent icon={item.icon} />
                                         {item.label}
@@ -106,14 +108,14 @@ const Navbar = () => {
                     className={` font-medium rounded-xl px-5 py-4 flex items-center gap-3 transition-colors duration-200 hover:bg-forestGreen-500 text-forestGreen-100 hover:text-white`}
                 >
                     <svg width="17" height="21" viewBox="0 0 17 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12.9384 16.4692V17.7957C12.9384 18.1474 12.7986 18.4849 12.5499 18.7336C12.3011 18.9823 11.9637 19.1222 11.6119 19.1222H2.32649C1.97468 19.1222 1.63728 18.9823 1.38851 18.7336C1.13976 18.4849 1 18.1474 1 17.7957V3.2043C1 2.85248 1.13976 2.51509 1.38851 2.26633C1.63728 2.01756 1.97468 1.87781 2.32649 1.87781H11.6119C11.9637 1.87781 12.3011 2.01756 12.5499 2.26633C12.7986 2.51509 12.9384 2.85248 12.9384 3.2043V4.53078" stroke="white" strokeWidth="2" strokeLinecap="round" stroke-linejoin="round"/>
-                        <path d="M6.30591 10.5H15.5913" stroke="white" strokeWidth="2" strokeLinecap="round" stroke-linejoin="round"/>
-                        <path d="M12.9385 7.84698L15.5915 10.5L12.9385 13.1529" stroke="white" strokeWidth="2" strokeLinecap="round" stroke-linejoin="round"/>
+                        <path d="M12.9384 16.4692V17.7957C12.9384 18.1474 12.7986 18.4849 12.5499 18.7336C12.3011 18.9823 11.9637 19.1222 11.6119 19.1222H2.32649C1.97468 19.1222 1.63728 18.9823 1.38851 18.7336C1.13976 18.4849 1 18.1474 1 17.7957V3.2043C1 2.85248 1.13976 2.51509 1.38851 2.26633C1.63728 2.01756 1.97468 1.87781 2.32649 1.87781H11.6119C11.9637 1.87781 12.3011 2.01756 12.5499 2.26633C12.7986 2.51509 12.9384 2.85248 12.9384 3.2043V4.53078" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M6.30591 10.5H15.5913" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M12.9385 7.84698L15.5915 10.5L12.9385 13.1529" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                     Log Out
                 </Link>
             </div>
-            <div className={`bg-forestGreen-300/90 backdrop-blur-md fixed w-full h-screen left-0 top-0 z-[3] ${isNavbarOpened ? 'block' : 'hidden'}`}></div>
+            <div className={`bg-forestGreen-300/90 backdrop-blur-md md:hidden fixed w-full h-screen left-0 top-0 z-[5] ${isNavbarOpened ? 'block' : 'hidden'}`}></div>
         </div>
     )
 }

@@ -10,6 +10,7 @@ export default {
     extend: {
       colors: {
         'earthGreen': {
+          50: '#EDF7EE',
           100: '#C8E6C9',
           200: '#ADDAAF',
           300: '#87C98A',
