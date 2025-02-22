@@ -1,0 +1,58 @@
+import React, { useState } from 'react'
+import Button from './Button';
+import Image from 'next/image';
+import Modal from '../layout/Modal';
+
+type RewardProps = {
+  onClick?: () => void;
+  image?: string;
+  discountName?: string;
+  discountDescription?: string;
+  pointsNeeded?: string;
+};
+
+const Reward:React.FC<RewardProps> = ({onClick, image, discountDescription, discountName, pointsNeeded}) => {
+  const [rewardNotfModal, setRewardNotffModal] = useState(false);
+
+  const GetThisReward = () => {
+    setRewardNotffModal(true);
+  }
+  return (
+    <div className="flex flex-col gap-2">
+        <div className="bg-white p-6 rounded-[1.25rem] flex flex-col gap-7">
+            <Image alt='Partner Logo' width={80} height={80} src={image} className='h-10 object-contain' />
+            <div className="flex flex-col">
+                <span className='font-bold text-[1.75rem] text-forestGreen-700'>{discountName}</span>
+                <p className='text-base text-forestGreen-500 font-medium'>{discountDescription}</p>
+            </div>
+            <span className='italic text-earthGreen-500 text-xl font-bold'>Require {pointsNeeded} points.</span>
+        </div>
+        <Button onClick={GetThisReward}>Get this reward</Button>
+        <Modal
+          isModalOpen={rewardNotfModal}
+          closeModal={() => setRewardNotffModal(false)}
+        >
+            <div className="flex flex-col items-center gap-7">
+				<div className='w-20 h-20 rounded-full bg-earthGreen-500 flex items-center justify-center'>
+					<svg width="38" height="37" viewBox="0 0 38 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M0.992188 22.1709H7.25554V34.6976H0.992188V22.1709Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+						<path d="M7.24902 32.2828C23.6903 37.7632 18.2099 37.7632 36.9999 28.3682C36.472 27.657 35.7382 27.1252 34.8979 26.8452C34.0576 26.5651 33.1515 26.5501 32.3024 26.8023L25.4127 29.09" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+						<path d="M7.24902 23.7367H11.9465C14.6117 23.8312 17.1368 24.9534 18.9928 26.8684H23.6903C23.9194 26.8272 24.1547 26.8368 24.3796 26.8966C24.6046 26.9563 24.8137 27.0646 24.9922 27.2139C25.1707 27.3632 25.3143 27.5499 25.4128 27.7607C25.5114 27.9716 25.5624 28.2015 25.5624 28.4342C25.5624 28.6669 25.5114 28.8968 25.4128 29.1077C25.3143 29.3185 25.1707 29.5052 24.9922 29.6545C24.8137 29.8038 24.6046 29.9122 24.3796 29.9719C24.1547 30.0316 23.9194 30.0412 23.6903 30H15.0782" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+						<path d="M22.9141 6.44654C22.9141 7.06342 23.0356 7.67427 23.2716 8.2442C23.5077 8.81412 23.8537 9.33197 24.2899 9.76818C24.7261 10.2044 25.244 10.5504 25.8139 10.7865C26.3838 11.0225 26.9947 11.144 27.6116 11.144C28.2285 11.144 28.8393 11.0225 29.4092 10.7865C29.9792 10.5504 30.497 10.2044 30.9332 9.76818C31.3694 9.33197 31.7154 8.81412 31.9515 8.2442C32.1876 7.67427 32.3091 7.06342 32.3091 6.44654C32.3091 5.20068 31.8142 4.00585 30.9332 3.12489C30.0523 2.24394 28.8574 1.74902 27.6116 1.74902C26.3657 1.74902 25.1709 2.24394 24.2899 3.12489C23.409 4.00585 22.9141 5.20068 22.9141 6.44654Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+						<path d="M15.085 17.4072C15.085 18.0241 15.2065 18.635 15.4425 19.2049C15.6786 19.7748 16.0246 20.2927 16.4608 20.7289C16.897 21.1651 17.4149 21.5111 17.9848 21.7472C18.5547 21.9832 19.1656 22.1047 19.7825 22.1047C20.3994 22.1047 21.0102 21.9832 21.5801 21.7472C22.1501 21.5111 22.6679 21.1651 23.1041 20.7289C23.5403 20.2927 23.8863 19.7748 24.1224 19.2049C24.3585 18.635 24.48 18.0241 24.48 17.4072C24.48 16.7903 24.3585 16.1795 24.1224 15.6096C23.8863 15.0396 23.5403 14.5218 23.1041 14.0856C22.6679 13.6494 22.1501 13.3034 21.5801 13.0673C21.0102 12.8312 20.3994 12.7097 19.7825 12.7097C19.1656 12.7097 18.5547 12.8312 17.9848 13.0673C17.4149 13.3034 16.897 13.6494 16.4608 14.0856C16.0246 14.5218 15.6786 15.0396 15.4425 15.6096C15.2065 16.1795 15.085 16.7903 15.085 17.4072Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+						<path d="M19.7822 15.8417V18.9733" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+						<path d="M27.6113 4.88062V8.01229" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+					</svg>
+				</div>
+				<div className="flex flex-col items-center gap-4">
+					<span className='font-medium text-xl text-forestGreen-700'>Great job!</span>
+					<span className="text-forestGreen-700 font-bold text-[1.75rem] sm:text-[2rem] text-center leading-[120%]">You've earned [X] points!</span>
+				</div>
+				<p className='text-base font-medium text-forestGreen-500 text-center'>Keep it up and continue making a positive impact!</p>
+            </div>
+        </Modal>
+    </div>
+  )
+}
+
+export default Reward
