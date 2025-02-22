@@ -10,7 +10,7 @@ export default function DashboardLayout({
         className='flex bg-earthGreen-100'
         >
             <Navbar/>
-            <div className="px-5 pb-7 pt-[calc(64px+1.25rem)] md:p-10 w-full">
+            <div className="px-5 pb-7 pt-[calc(64px+1.25rem)] md:p-10 w-full min-h-screen">
                 {children}
             </div>
         </div>

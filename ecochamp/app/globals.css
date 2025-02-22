@@ -57,7 +57,7 @@ body {
 }
 
 .button.secondary {
-  @apply bg-earthGreen-500 text-white hover:bg-earthGreen-600
+  @apply bg-transparent border-2 border-earthGreen-500 text-earthGreen-500 border-solid hover:bg-earthGreen-100
 }
 
 .button.tertiary {
