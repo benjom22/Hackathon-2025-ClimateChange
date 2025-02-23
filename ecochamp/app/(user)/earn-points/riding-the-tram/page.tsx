@@ -4,14 +4,49 @@ import Input from "@/components/ui/Input"
 import Button from "@/components/ui/Button"
 import Link from "next/link";
 import { useState } from "react";
+import { useFetchUserData } from "@/app/hooks/useFetchUserData";
+import { useSession, signOut } from "next-auth/react";
 
 export default function Page() {
     const [code, setCode] = useState('');
     const [rewardSuccess, setRewardSuccess] = useState(false);
 
+    const { data: session, status } = useSession();
+    const { user, error, loading } = useFetchUserData({ email: session?.user?.email });
+
     const GetThisReward = () => {
-    setRewardSuccess(true);
-    }
+        const email = user?.email;
+        if (!email) {
+          console.error("Email is not available");
+          return;
+        }
+        redeemCoupon(email, code);
+        setRewardSuccess(true);
+    };
+      
+
+    const redeemCoupon = async (email: string, couponCode: string) => {
+        try {
+          const response = await fetch('/api/coupons/check', {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, couponCode }),
+          });
+      
+          const data = await response.json();
+      
+          if (response.ok) {
+            console.log('Success:', data.message, 'New points:', data.newPoints);
+          } else {
+            console.error('Error:', data.error);
+          }
+        } catch (error) {
+          console.error('An error occurred:', error);
+        }
+    };
+
     return (
         <div className="flex flex-col items-center gap-12 w-full">
             <div className="flex-col w-full aspect-[1400/340] max-h-[180px] p-8 flex justify-center rounded-2xl bg-center bg-cover bg-[url('/options/tram.png')]">
