@@ -23,7 +23,7 @@ export default function Page() {
                     <div className="w-16 h-16 rounded-full bg-earthGreen-300 flex items-center justify-center">
                         <span className="text-2xl font-bold text-forestGreen-700">01</span>
                     </div>
-                    <h2 className="text-forestGreen-500 font-medium text-xl sm:text-2xl text-center">Check if the item you are recycling is a plastic bottle or a glass jar.</h2>
+                    <h2 className="text-forestGreen-500 font-medium text-xl sm:text-2xl text-center">Ensure you have purchased your ticket either on the tram or at a ticket stand.</h2>
                 </div>
                 <svg width="32" height="48" viewBox="0 0 32 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fillRule="evenodd" clipRule="evenodd" d="M13.5756 46.9958C14.9146 48.3347 17.0854 48.3347 18.4244 46.9958L30.4244 34.9958C31.7633 33.6568 31.7633 31.486 30.4244 30.1471C29.0854 28.8081 26.9146 28.8081 25.5756 30.1471L19.4286 36.2941L19.4286 3.42857C19.4286 1.53497 17.8935 1.67775e-06 16 1.51221e-06C14.1065 1.34668e-06 12.5714 1.53497 12.5714 3.42857L12.5714 36.2941L6.42436 30.147C5.08547 28.8081 2.9145 28.8081 1.57564 30.147C0.236784 31.486 0.236784 33.6568 1.57564 34.9958L13.5756 46.9958Z" fill="#2C6B3F"/>
@@ -32,7 +32,7 @@ export default function Page() {
                     <div className="w-16 h-16 rounded-full bg-earthGreen-300 flex items-center justify-center">
                         <span className="text-2xl font-bold text-forestGreen-700">02</span>
                     </div>
-                    <h2 className="text-forestGreen-500 font-medium text-xl sm:text-2xl text-center">Skenirajte QR kod na flaši pomoću aplikacije za reciklažu.</h2>
+                    <h2 className="text-forestGreen-500 font-medium text-xl sm:text-2xl text-center">Once you have your ticket, locate the code at the bottom.</h2>
                 </div>
                 <svg width="32" height="48" viewBox="0 0 32 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fillRule="evenodd" clipRule="evenodd" d="M13.5756 46.9958C14.9146 48.3347 17.0854 48.3347 18.4244 46.9958L30.4244 34.9958C31.7633 33.6568 31.7633 31.486 30.4244 30.1471C29.0854 28.8081 26.9146 28.8081 25.5756 30.1471L19.4286 36.2941L19.4286 3.42857C19.4286 1.53497 17.8935 1.67775e-06 16 1.51221e-06C14.1065 1.34668e-06 12.5714 1.53497 12.5714 3.42857L12.5714 36.2941L6.42436 30.147C5.08547 28.8081 2.9145 28.8081 1.57564 30.147C0.236784 31.486 0.236784 33.6568 1.57564 34.9958L13.5756 46.9958Z" fill="#2C6B3F"/>
@@ -41,7 +41,16 @@ export default function Page() {
                     <div className="w-16 h-16 rounded-full bg-earthGreen-300 flex items-center justify-center">
                         <span className="text-2xl font-bold text-forestGreen-700">03</span>
                     </div>
-                    <h2 className="text-forestGreen-500 font-medium text-xl sm:text-2xl text-center">Odložite flašu u odgovarajući kontejner za plastiku ili staklo.</h2>
+                    <h2 className="text-forestGreen-500 font-medium text-xl sm:text-2xl text-center">Enter the code in the app.</h2>
+                </div>
+                <svg width="32" height="48" viewBox="0 0 32 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M13.5756 46.9958C14.9146 48.3347 17.0854 48.3347 18.4244 46.9958L30.4244 34.9958C31.7633 33.6568 31.7633 31.486 30.4244 30.1471C29.0854 28.8081 26.9146 28.8081 25.5756 30.1471L19.4286 36.2941L19.4286 3.42857C19.4286 1.53497 17.8935 1.67775e-06 16 1.51221e-06C14.1065 1.34668e-06 12.5714 1.53497 12.5714 3.42857L12.5714 36.2941L6.42436 30.147C5.08547 28.8081 2.9145 28.8081 1.57564 30.147C0.236784 31.486 0.236784 33.6568 1.57564 34.9958L13.5756 46.9958Z" fill="#2C6B3F"/>
+                </svg>
+                <div className="flex flex-col gap-3 items-center max-w-[400px]">
+                    <div className="w-16 h-16 rounded-full bg-earthGreen-300 flex items-center justify-center">
+                        <span className="text-2xl font-bold text-forestGreen-700">04</span>
+                    </div>
+                    <h2 className="text-forestGreen-500 font-medium text-xl sm:text-2xl text-center">Recycle your ticket, collect points, and enjoy the ride!</h2>
                 </div>
             </div>
             <div className="flex flex-col items-center my-20 gap-12">
