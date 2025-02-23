@@ -35,7 +35,7 @@ const RegisterForm = () => {
 
       if (res.status === 200) {
         setMessage(data.message);
-        //router.push('/dashboard')
+        router.push("/auth/login");
         setIsRegisterStarted(false);
       } else {
         setError(data.error || "An unknown error occurred.");
