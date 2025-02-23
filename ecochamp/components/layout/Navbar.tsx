@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { navigation } from '@/app/content/navigation'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
+import { signOut } from 'next-auth/react'
 
 const IconComponent = ({ icon }) => {
     return (
@@ -17,6 +18,10 @@ const IconComponent = ({ icon }) => {
 };
 
 const Navbar = () => {
+    const handleLogout = () => {
+        signOut({ callbackUrl: '/' });
+    };
+
     const pathname = usePathname();
     const [isNavbarOpened, setNavbarOpened] = useState(false);
     
@@ -103,8 +108,8 @@ const Navbar = () => {
                         </div>
                     </div>
                 </div>
-                <Link
-                    href=""
+                <button
+                    onClick={handleLogout}
                     className={` font-medium rounded-xl px-5 py-4 flex items-center gap-3 transition-colors duration-200 hover:bg-forestGreen-500 text-forestGreen-100 hover:text-white`}
                 >
                     <svg width="17" height="21" viewBox="0 0 17 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -113,7 +118,7 @@ const Navbar = () => {
                         <path d="M12.9385 7.84698L15.5915 10.5L12.9385 13.1529" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                     Log Out
-                </Link>
+                </button>
             </div>
             <div className={`bg-forestGreen-300/90 backdrop-blur-md md:hidden fixed w-full h-screen left-0 top-0 z-[5] ${isNavbarOpened ? 'block' : 'hidden'}`}></div>
         </div>
