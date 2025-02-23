@@ -60,6 +60,7 @@ export const PUT = async (req: Request) => {
       JSON.stringify({
         message: "Coupon redeemed successfully",
         newPoints: updatedUser.points,
+        pointsDifference: coupon.points
       }),
       { status: 200 }
     );
