@@ -169,7 +169,7 @@ export default function Page() {
                         </div>
                     )}
                         
-                </Modal>
+            </Modal>
         </div>
     )
 }
