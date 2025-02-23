@@ -5,6 +5,9 @@ import Link from 'next/link'
 import { navigation } from '@/app/content/navigation'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
+import { signOut } from 'next-auth/react'
+import { useSession } from 'next-auth/react'
+import { useFetchUserData } from '@/app/hooks/useFetchUserData'
 
 const IconComponent = ({ icon }) => {
     return (
@@ -17,6 +20,14 @@ const IconComponent = ({ icon }) => {
 };
 
 const Navbar = () => {
+    const handleLogout = () => {
+        signOut({ callbackUrl: '/' });
+    };
+
+    const { data: session, status } = useSession();
+    
+    const { user, error, loading } = useFetchUserData({ email: session?.user?.email });
+
     const pathname = usePathname();
     const [isNavbarOpened, setNavbarOpened] = useState(false);
     
@@ -77,13 +88,24 @@ const Navbar = () => {
                         </svg>
                     </div>
                     <div className="flex flex-col gap-8 w-full">
-                        <div className="flex flex-col gap-4 items-center">
-                            <Image alt='avatar' width={100} height={100} src="https://img.freepik.com/premium-photo/african-boy-with-happy-expression-victory_651462-1092.jpg?semt=ais_hybrid" className="w-20 h-20 rounded-2xl bg-forestGreen-500 object-cover"></Image>
-                            <div className="flex flex-col items-center">
-                                <span className='text-lg font-medium text-forestGreen-100 leading-[100%]'>Hello</span>
-                                <span className="text-white text-[1.75rem] leading-[130%] font-semibold">Adnan</span>
+                        {loading ? (
+                            <div className="flex flex-col gap-4 items-center">
+                                <div className="w-20 h-20 rounded-2xl bg-forestGreen-500 object-cover animate pulse"></div>
+                                <div className="flex flex-col items-center gap-1.5">
+                                    <span className='text-lg font-medium text-forestGreen-100 leading-[100%] w-7 h-2 rounded-full bg-forestGreen-200'></span>
+                                    <span className="text-white text-[1.75rem] leading-[130%] font-semibold w-12 h-6 rounded-full bg-forestGreen-100"></span>
+                                </div>
                             </div>
-                        </div>
+                        ) : (
+                            <div className="flex flex-col gap-4 items-center">
+                                <Image alt='avatar' width={100} height={100} src="https://img.freepik.com/premium-photo/african-boy-with-happy-expression-victory_651462-1092.jpg?semt=ais_hybrid" className="w-20 h-20 rounded-2xl bg-forestGreen-500 object-cover"></Image>
+                                <div className="flex flex-col items-center">
+                                    <span className='text-lg font-medium text-forestGreen-100 leading-[100%]'>Hello</span>
+                                    <span className="text-white text-[1.75rem] leading-[130%] font-semibold">{user?.username}</span>
+                                </div>
+                            </div>
+                        )}
+                    
                         <div className="w-full h-[1px] bg-forestGreen-600"></div>
                         <div className="flex flex-col gap-4">
                             <span className="text-white uppercase text-sm font-medium">General</span>
@@ -103,8 +125,8 @@ const Navbar = () => {
                         </div>
                     </div>
                 </div>
-                <Link
-                    href=""
+                <button
+                    onClick={handleLogout}
                     className={` font-medium rounded-xl px-5 py-4 flex items-center gap-3 transition-colors duration-200 hover:bg-forestGreen-500 text-forestGreen-100 hover:text-white`}
                 >
                     <svg width="17" height="21" viewBox="0 0 17 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -113,7 +135,7 @@ const Navbar = () => {
                         <path d="M12.9385 7.84698L15.5915 10.5L12.9385 13.1529" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                     Log Out
-                </Link>
+                </button>
             </div>
             <div className={`bg-forestGreen-300/90 backdrop-blur-md md:hidden fixed w-full h-screen left-0 top-0 z-[5] ${isNavbarOpened ? 'block' : 'hidden'}`}></div>
         </div>

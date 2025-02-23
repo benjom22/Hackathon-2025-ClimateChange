@@ -7,12 +7,12 @@ export const GET = async (req: Request) => {
   if (!email) {
     return new Response(JSON.stringify({ error: "Email is required" }), {
       status: 400,
-    });
+    });e
   }
 
   const user = await prisma.user.findUnique({
     where: { email },
-    select: { id: true, username: true, email: true },
+    select: { id: true, username: true, email: true, points: true },
   });
 
   if (!user) {
