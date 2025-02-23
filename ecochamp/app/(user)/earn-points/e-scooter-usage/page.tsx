@@ -14,7 +14,7 @@ export default function Page() {
     }
     return (
         <div className="flex flex-col items-center gap-12 w-full">
-            <div className="flex-col w-full aspect-[1400/340] max-h-[180px] p-8 flex justify-center rounded-2xl bg-center bg-cover bg-[url('/options/bottle-recycling.png')]">
+            <div className="flex-col w-full aspect-[1400/340] max-h-[180px] p-8 flex justify-center rounded-2xl bg-center bg-cover bg-[url('/options/e-scooters.png')]">
                 <span className="text-earthGreen-200 font-medium text-md sm:text-xl uppercase">How to earn with:</span>
                 <h1 className="text-white text-[1.35rem] sm:text-[2.5rem] font-bold">E-Scooter Usage</h1>
             </div>
