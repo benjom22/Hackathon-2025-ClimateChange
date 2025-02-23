@@ -2,12 +2,13 @@
 import Button from "@/components/ui/Button"
 import { useSession, signOut } from "next-auth/react";
 import { useFetchUserData } from "@/app/hooks/useFetchUserData";
+import { useFetchLeaderboard } from "@/app/hooks/useFetchLeaderboardData";
 
 export default function Page() {
     const { data: session, status } = useSession();
-
-    // Use the custom hook to fetch user data based on the session email
     const { user, error, loading } = useFetchUserData({ email: session?.user?.email });
+
+    const { leaderboard, leaderboardLoading } = useFetchLeaderboard();
 
     return (
         <div>
@@ -22,8 +23,7 @@ export default function Page() {
                         <div className="w-full h-60 bg-earthGreen-50 animate-pulse rounded-2xl"></div>
                     </div>
                 </div>
-            }
-                
+            }  
             {user &&
             <div className="flex flex-col gap-10 w-full">
                 <div className="flex flex-col gap-1">
@@ -70,7 +70,7 @@ export default function Page() {
                                 </svg>
                                 <span className="text-forestGreen-400 text-xl font-medium">Leaderboard Position</span>
                             </div>
-                            <span className="font-bold text-[3.75rem] text-forestGreen-700 leading-[100%]">#362</span>
+                            <span className="font-bold text-[3.75rem] text-forestGreen-700 leading-[100%]">#{leaderboard.find(item => item.username === user.username)?.rank}</span>
                         </div>
                         <Button style="tertiary" href="/leaderboards" className="w-full">
                             Check leaderboards
