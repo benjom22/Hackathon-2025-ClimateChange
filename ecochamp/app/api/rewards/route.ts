@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
+import crypto from "crypto";
 
 const prisma = new PrismaClient();
 
@@ -8,12 +9,26 @@ export async function GET() {
   return NextResponse.json(rewards, { status: 200 });
 }
 
+const generateQRCode = () =>
+  crypto.randomBytes(6).toString("hex").toUpperCase();
+
 export async function POST(req: Request) {
-  const { description, value, partnerId } = await req.json();
-  const newReward = await prisma.rewards.create({
-    data: { description, value, partnerId },
-  });
-  return NextResponse.json(newReward, { status: 201 });
+  try {
+    const { description, value, partnerId } = await req.json();
+
+    const qrcode = generateQRCode();
+
+    const newReward = await prisma.rewards.create({
+      data: { description, value, partnerId, qrcode },
+    });
+
+    return NextResponse.json(newReward, { status: 201 });
+  } catch (error) {
+    return NextResponse.json(
+      { error: "Something went wrong", details: error },
+      { status: 500 }
+    );
+  }
 }
 
 export async function PUT(req: Request) {

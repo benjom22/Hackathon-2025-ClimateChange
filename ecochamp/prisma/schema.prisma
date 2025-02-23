@@ -36,7 +36,9 @@ model Partners {
 
 model Rewards {
   id          Int      @id @default(autoincrement())
+  name        String   @default("Default") @db.VarChar(255)
   description String   @db.VarChar(255)
+  qrcode      String?  @db.VarChar(255)
   value       Int
   partnerId   Int
   partner     Partners @relation(fields: [partnerId], references: [id], onDelete: Cascade)
