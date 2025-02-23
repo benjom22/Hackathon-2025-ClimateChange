@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import AuthContext from "./(user)/AutoContext";
+import ProfileMenu from "./(user)/ProfileMenu";
 
 export const metadata: Metadata = {
   title: "EcoChamp: Empowering Sustainable Change",
@@ -17,7 +19,9 @@ export default function RootLayout({
       <body
         className={`antialiased`}
       >
-          {children}
+          <AuthContext>
+            {children}
+          </AuthContext>
       </body>
     </html>
   );

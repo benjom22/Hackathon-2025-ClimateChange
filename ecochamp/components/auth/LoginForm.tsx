@@ -44,7 +44,7 @@ const LoginForm = () => {
     if (result?.error) {
       setError(result.error);
     } else {
-      // router.push('/dashboard'); // Redirect to the dashboard on successful login
+      router.push('/dashboard'); // Redirect to the dashboard on successful login
 
       console.log(result);
     }

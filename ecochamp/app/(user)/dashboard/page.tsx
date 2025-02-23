@@ -1,9 +1,23 @@
 "use client"
 import Button from "@/components/ui/Button"
+import { useSession, signOut } from "next-auth/react";
+import { useEffect } from 'react';
 
 export default function Page() {
+    const { data } = useSession();
+
+    const handleLogout = () => {
+        signOut({ callbackUrl: '/' }); // Redirect to home page after logout (you can change the URL)
+      };
+
+    useEffect(() => {
+        console.log(data);
+    }, [data]); // Will log whenever 'data' changes
     return (
         <div className="flex flex-col gap-10 w-full">
+            <button onClick={handleLogout}>
+                Logout
+            </button>
             <div className="flex flex-col gap-1">
                 <h1 className="text-forestGreen-700 text-[1.75rem] sm:text-[2.5rem] font-bold">Dashboard</h1>
                 <p className="text-base text-forestGreen-500 font-medium">View your points, current rank, and track progress.</p>
