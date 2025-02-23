@@ -2,24 +2,16 @@ import prisma from "@/lib/prisma";
 
 export const GET = async (req: Request) => {
   const { searchParams } = new URL(req.url);
-  const userId = searchParams.get("id");
+  const email = searchParams.get("email");
 
-  if (!userId) {
-    return new Response(JSON.stringify({ error: "User ID is required" }), {
-      status: 400,
-    });
-  }
-
-  const numericUserId = parseInt(userId, 10);
-
-  if (isNaN(numericUserId)) {
-    return new Response(JSON.stringify({ error: "Invalid user ID" }), {
+  if (!email) {
+    return new Response(JSON.stringify({ error: "Email is required" }), {
       status: 400,
     });
   }
 
   const user = await prisma.user.findUnique({
-    where: { id: numericUserId },
+    where: { email },
     select: { id: true, username: true, email: true },
   });
 
