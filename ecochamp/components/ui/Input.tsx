@@ -9,11 +9,12 @@ interface InputProps {
   required?: boolean;
   placeholder?: string;
   className?: string;
+  darkMode? : boolean;
 }
 
-const Input: React.FC<InputProps> = ({ label, type, value, onChange, id, required, placeholder, className }) => (
+const Input: React.FC<InputProps> = ({ label, type, value, onChange, id, required, placeholder, className, darkMode }) => (
   <div className={`flex flex-col gap-0.5 w-full ${className}`}>
-    <label className='text-white text-sm font-regular' htmlFor={id}>{label}:</label>
+    <label className={` text-sm font-regular ${darkMode ? 'text-forestGreen-500 text-center font-bold mb-1' : 'text-white'}`} htmlFor={id}>{label}:</label>
     <input
       type={type}
       id={id}

@@ -1,5 +1,5 @@
 "use client"
-import Button from "@/components/ui/Button"
+import Link from "next/link"
 
 export default function Page() {
     return (
@@ -12,7 +12,7 @@ export default function Page() {
                 </div>
             </div>
             <div className="grid gird-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
-                <div className="flex items-center p-4 bg-white rounded-[1.25rem] gap-5 flex-1 basis-[300px] cursor-pointer hover:-translate-y-1 transition-all duration-200 ease-in-out hover:shadow-[0_5px_35px_rgba(0,0,0,0.1)]">
+                <Link href="/earn-points/bottle-recycling" className="flex items-center p-4 bg-white rounded-[1.25rem] gap-5 flex-1 basis-[300px] cursor-pointer hover:-translate-y-1 transition-all duration-200 ease-in-out hover:shadow-[0_5px_35px_rgba(0,0,0,0.1)]">
                     <div className="flex items-center justify-center bg-earthGreen-500 w-20 h-20 rounded-2xl">
                         <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M14.7976 6.44366V4.13296C14.7976 3.56726 14.5728 3.02474 14.1728 2.62473C13.7728 2.22472 13.2303 2 12.6646 2H10.5316C9.96594 2 9.42342 2.22472 9.02341 2.62473C8.6234 3.02474 8.39868 3.56726 8.39868 4.13296V6.44366" stroke="white" strokeWidth="2.13296" strokeLinecap="round" strokeLinejoin="round"/>
@@ -26,8 +26,8 @@ export default function Page() {
                         </svg>
                     </div>
                     <span className="text-xl font-bold text-forestGreen-500">Bottle<br></br>Recycling</span>
-                </div>
-                <div className="flex items-center p-4 bg-white rounded-[1.25rem] gap-5 flex-1 basis-[300px] cursor-pointer hover:-translate-y-1 transition-all duration-200 ease-in-out hover:shadow-[0_5px_35px_rgba(0,0,0,0.1)]">
+                </Link>
+                <Link href="/earn-points/e-scooter-usage" className="flex items-center p-4 bg-white rounded-[1.25rem] gap-5 flex-1 basis-[300px] cursor-pointer hover:-translate-y-1 transition-all duration-200 ease-in-out hover:shadow-[0_5px_35px_rgba(0,0,0,0.1)]">
                     <div className="flex items-center justify-center bg-earthGreen-500 w-20 h-20 rounded-2xl">
                         <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M31.8352 34C33.0399 34 34.0166 33.0233 34.0166 31.8186C34.0166 30.6139 33.0399 29.6372 31.8352 29.6372C30.6305 29.6372 29.6538 30.6139 29.6538 31.8186C29.6538 33.0233 30.6305 34 31.8352 34Z" stroke="white" strokeWidth="2.3759" strokeLinecap="round" strokeLinejoin="round"/>
@@ -41,8 +41,8 @@ export default function Page() {
 
                     </div>
                     <span className="text-xl font-bold text-forestGreen-500">E-Scooter<br></br>Usage</span>
-                </div>
-                <div className="flex items-center p-4 bg-white rounded-[1.25rem] gap-5 flex-1 basis-[300px] cursor-pointer hover:-translate-y-1 transition-all duration-200 ease-in-out hover:shadow-[0_5px_35px_rgba(0,0,0,0.1)]">
+                </Link>
+                <Link href="/earn-points/riding-the-tram" className="flex items-center p-4 bg-white rounded-[1.25rem] gap-5 flex-1 basis-[300px] cursor-pointer hover:-translate-y-1 transition-all duration-200 ease-in-out hover:shadow-[0_5px_35px_rgba(0,0,0,0.1)]">
                     <div className="flex items-center justify-center bg-earthGreen-500 w-20 h-20 rounded-2xl">
                         <svg width="33" height="36" viewBox="0 0 33 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M6.64425 2H26.5554C26.5554 2 29.3998 2 29.3998 4.84444V24.7556C29.3998 24.7556 29.3998 27.6 26.5554 27.6H6.64425C6.64425 27.6 3.7998 27.6 3.7998 24.7556V4.84444C3.7998 4.84444 3.7998 2 6.64425 2Z" stroke="white" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"/>
@@ -52,7 +52,7 @@ export default function Page() {
                         </svg>
                     </div>
                     <span className="text-xl font-bold text-forestGreen-500">Riding the<br></br>Tram</span>
-                </div>
+                </Link>
             </div>
         </div>
     )
