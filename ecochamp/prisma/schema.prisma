@@ -24,6 +24,7 @@ model User {
   updatedAt DateTime @updatedAt
 
   redemptions Redemption[]
+  coupons     Coupon[]
 }
 
 model Partners {
@@ -55,4 +56,13 @@ model Redemption {
   reward Rewards @relation(fields: [rewardId], references: [id], onDelete: Cascade)
 
   @@id([userId, rewardId])
+}
+
+model Coupon {
+  id     Int     @id @default(autoincrement())
+  points Int
+  code   String  @unique
+  used   Boolean @default(false)
+  userId Int?
+  user   User?   @relation(fields: [userId], references: [id], onDelete: SetNull)
 }
