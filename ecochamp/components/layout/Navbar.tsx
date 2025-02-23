@@ -6,6 +6,8 @@ import { navigation } from '@/app/content/navigation'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import { signOut } from 'next-auth/react'
+import { useSession } from 'next-auth/react'
+import { useFetchUserData } from '@/app/hooks/useFetchUserData'
 
 const IconComponent = ({ icon }) => {
     return (
@@ -21,6 +23,10 @@ const Navbar = () => {
     const handleLogout = () => {
         signOut({ callbackUrl: '/' });
     };
+
+    const { data: session, status } = useSession();
+    
+    const { user, error, loading } = useFetchUserData({ email: session?.user?.email });
 
     const pathname = usePathname();
     const [isNavbarOpened, setNavbarOpened] = useState(false);
@@ -82,13 +88,24 @@ const Navbar = () => {
                         </svg>
                     </div>
                     <div className="flex flex-col gap-8 w-full">
-                        <div className="flex flex-col gap-4 items-center">
-                            <Image alt='avatar' width={100} height={100} src="https://img.freepik.com/premium-photo/african-boy-with-happy-expression-victory_651462-1092.jpg?semt=ais_hybrid" className="w-20 h-20 rounded-2xl bg-forestGreen-500 object-cover"></Image>
-                            <div className="flex flex-col items-center">
-                                <span className='text-lg font-medium text-forestGreen-100 leading-[100%]'>Hello</span>
-                                <span className="text-white text-[1.75rem] leading-[130%] font-semibold">Adnan</span>
+                        {loading ? (
+                            <div className="flex flex-col gap-4 items-center">
+                                <div className="w-20 h-20 rounded-2xl bg-forestGreen-500 object-cover animate pulse"></div>
+                                <div className="flex flex-col items-center gap-1.5">
+                                    <span className='text-lg font-medium text-forestGreen-100 leading-[100%] w-7 h-2 rounded-full bg-forestGreen-200'></span>
+                                    <span className="text-white text-[1.75rem] leading-[130%] font-semibold w-12 h-6 rounded-full bg-forestGreen-100"></span>
+                                </div>
                             </div>
-                        </div>
+                        ) : (
+                            <div className="flex flex-col gap-4 items-center">
+                                <Image alt='avatar' width={100} height={100} src="https://img.freepik.com/premium-photo/african-boy-with-happy-expression-victory_651462-1092.jpg?semt=ais_hybrid" className="w-20 h-20 rounded-2xl bg-forestGreen-500 object-cover"></Image>
+                                <div className="flex flex-col items-center">
+                                    <span className='text-lg font-medium text-forestGreen-100 leading-[100%]'>Hello</span>
+                                    <span className="text-white text-[1.75rem] leading-[130%] font-semibold">{user?.username}</span>
+                                </div>
+                            </div>
+                        )}
+                    
                         <div className="w-full h-[1px] bg-forestGreen-600"></div>
                         <div className="flex flex-col gap-4">
                             <span className="text-white uppercase text-sm font-medium">General</span>
